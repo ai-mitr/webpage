@@ -23,15 +23,15 @@ const Features = () => {
   const features = [
     {
       icon: <Brain className="w-8 h-8 text-purple-600" />,
-      title: "AI-driven personalization",
+      title: "AI Content Generator",
       description:
-        "Our AI engine understands your needs and generates truly personalized content that resonates with your audience.",
+        "Generate text for flyers, captions, and headings using natural language processing",
     },
     {
       icon: <Globe className="w-8 h-8 text-purple-600" />,
-      title: "Localized content",
+      title: "Auto Design Assistant",
       description:
-        "Generate content in multiple languages with cultural nuances to connect with global audiences authentically.",
+        "Users can input their purpose (e.g., 'Create a wedding invitation') and get a pre-made design",
     },
     {
       icon: <MessageSquare className="w-8 h-8 text-purple-600" />,
