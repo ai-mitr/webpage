@@ -33,6 +33,7 @@ import {
   Download,
   Github,
   Twitter,
+  Instagram,
   Linkedin,
   Loader2,
   Copy,
@@ -407,19 +408,25 @@ export default function Home() {
             <div className="md:text-right">
               <div className="flex gap-4 md:justify-end mb-4">
                 <a
-                  href="#"
+                  href="https://x.com/ai_mitr_"
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   <Twitter className="h-5 w-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/ai_mitr_/"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://github.com/ai-mitr"
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/showcase/ai-mitr/about/?viewAsMember=true"
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
