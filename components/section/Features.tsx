@@ -23,7 +23,7 @@ const Features = () => {
   const features = [
     {
       icon: <Brain className="w-8 h-8 text-purple-600" />,
-      title: "AI Content Generator",
+      title: "AI Mitr",
       description:
         "Generate text for flyers, captions, and headings using natural language processing",
     },

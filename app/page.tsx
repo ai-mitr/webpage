@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -43,8 +44,7 @@ import {
 } from "lucide-react";
 import Testimonials from "@/components/section/Testimonals";
 import Features from "@/components/section/Features";
-import * as dotenv from "dotenv";
-dotenv.config();
+import Logo from "@/public/Logo.png";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -173,6 +173,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      {/* Navbar Section */}
+      <nav className="absolute top-0 left-0 right-0 py-4 flex justify-center items-center z-20 bg-opacity-75">
+        <div className="flex items-center space-x-4">
+          {/* Company Logo */}
+          <img
+            src="/Logo.png" // Replace with your logo path
+            alt="Company Logo"
+            className="h-96 w-96" // Adjust logo size as needed
+          />
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-5" />
@@ -183,8 +195,8 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-4xl mx-auto z-10"
         >
-          <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-6">
-            Create Personalized, AI-Generated Content Effortlessly
+          <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-8 pb-3">
+            Create Personalized, DIY marketing tool AI startup
           </h1>
           <p className="text-xl text-gray-600 mb-8">
             Generate posts, posters, invitation cards, and more with AI-driven
@@ -399,7 +411,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold mb-4">AI Content Generator</h3>
+              <h3 className="font-semibold mb-4">AI Mitr</h3>
               <p className="text-gray-600 max-w-md">
                 Create engaging, personalized content with the power of AI.
                 Perfect for marketers, content creators, and businesses.
@@ -455,8 +467,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-600">
-            © {new Date().getFullYear()} AI Content Generator. All rights
-            reserved.
+            © {new Date().getFullYear()} AI Mitr. All rights reserved.
           </div>
         </div>
       </footer>

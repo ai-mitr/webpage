@@ -47,7 +47,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote:
-        "This AI content generator has completely transformed how I create social media content. It saves me hours every week!",
+        "This AI Mitr has completely transformed how I create social media content. It saves me hours every week!",
       name: "Sarah Johnson",
       position: "Marketing Manager",
       avatarUrl: "https://randomuser.me/api/portraits/women/44.jpg",
