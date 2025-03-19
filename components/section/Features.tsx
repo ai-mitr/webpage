@@ -23,7 +23,7 @@ const Features = () => {
   const features = [
     {
       icon: <Brain className="w-8 h-8 text-purple-600" />,
-      title: "AI Mitr",
+      title: "AI Generated Content",
       description:
         "Generate text for flyers, captions, and headings using natural language processing",
     },
@@ -49,7 +49,7 @@ const Features = () => {
 
   return (
     <section className="bg-gradient-to-br from-blue-50 to-purple-50 py-10">
-      <div className="container px-4 mx-auto">
+      <div className="container  mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Power Your Creativity with AI
