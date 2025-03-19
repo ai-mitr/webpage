@@ -19,16 +19,21 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+
+// Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
+
+// Interface for form data
 interface FormData {
   usageType: string;
   contentType: string;
   tone: string;
   prompt: string;
 }
+
 const HeroSection = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedContent, setGeneratedContent] = useState("");
@@ -40,80 +45,43 @@ const HeroSection = () => {
   });
   const [isCopied, setIsCopied] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  // Simulate content generation
   const generateContent = async (
     usageType: string,
-    type: string,
+    contentType: string,
     tone: string,
     prompt: string
   ) => {
-    try {
-      // Instead of calling the API, just return a message about future updates
-      return "Your content request has been received. We'll update you with the generated content soon.";
+    // Simulate an API call delay
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // The API call code is commented out to be used in the future
-      /*
-          const payload = {
-            prompt: `Generate a ${tone} ${type} ${usageType} post with the following details: ${prompt}`,
-            maxTokens: 150,
-          };
-      
-          console.log("Payload being sent to /api/openai:", payload);
-      
-          const response = await fetch("/api/openai", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
-      
-          console.log("Response from /api/openai:", response);
-      
-          if (!response.ok) {
-            const errorText = await response.text();
-            console.error(`API Error: ${response.statusText}`, errorText);
-            throw new Error(`API Error: ${response.statusText}`);
-          }
-      
-          const data = await response.json();
-          console.log("Parsed response data:", data);
-      
-          return data.data || "No content was generated. Try refining your input.";
-          */
-    } catch (error) {
-      console.error("Error generating content:", error);
-      return "An error occurred while processing your request. Please try again.";
-    }
+    // Return mock content
+    return `Generated ${tone} ${contentType} for ${usageType} use:\n\n${prompt}`;
   };
+
+  // Handle form submission
   const handleGenerate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsGenerating(true);
 
     try {
-      // Just show the update message instead of calling the API
-      setGeneratedContent(
-        "Your request has been submitted. We'll notify you when your content is ready."
+      const content = await generateContent(
+        formData.usageType,
+        formData.contentType,
+        formData.tone,
+        formData.prompt
       );
-
-      // Commented out API call for future implementation
-      /*
-          const content = await generateContent(
-            formData.usageType,
-            formData.contentType,
-            formData.tone,
-            formData.prompt
-          );
-          setGeneratedContent(content);
-          */
+      setGeneratedContent(content);
     } catch (error) {
-      console.error("Error processing request:", error);
-      setGeneratedContent(
-        "Sorry, there was an error submitting your request. Please try again."
-      );
+      console.error("Error generating content:", error);
+      setGeneratedContent("An error occurred. Please try again.");
     } finally {
       setIsGenerating(false);
     }
   };
+
+  // Handle copying generated content to clipboard
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(generatedContent);
@@ -124,43 +92,56 @@ const HeroSection = () => {
     }
   };
 
+  // Reset form when dialog closes
   const handleDialogOpenChange = (open: boolean) => {
     setIsDialogOpen(open);
     if (!open) {
-      // Reset form when dialog closes
       setFormData({ usageType: "", contentType: "", tone: "", prompt: "" });
       setGeneratedContent("");
       setIsCopied(false);
     }
   };
+
   return (
     <div>
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-5" />
+      {/* Background image */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-5 z-0" />
+
+      {/* Hero content */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={fadeIn}
         transition={{ duration: 0.8 }}
-        className="text-center max-w-4xl mx-auto z-10"
+        className="text-center max-w-4xl mx-auto z-10 relative"
       >
         <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-8 pb-3">
-          Create Personalized, DIY marketing tool AI startup
+          Create Personalized, DIY Marketing Tool AI Startup
         </h1>
         <p className="text-xl text-gray-600 mb-8">
           Generate posts, posters, invitation cards, and more with AI-driven
-          creativity
+          creativity.
         </p>
+
+        {/* Dialog for content generation */}
         <Dialog open={isDialogOpen} onOpenChange={handleDialogOpenChange}>
           <DialogTrigger asChild>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer"
+            >
               Generate Now
             </Button>
           </DialogTrigger>
+
           <DialogContent className="sm:max-w-[600px]">
             <DialogHeader>
               <DialogTitle>Generate Content</DialogTitle>
             </DialogHeader>
+
+            {/* Form */}
             <form onSubmit={handleGenerate} className="space-y-6 mt-4">
+              {/* Usage Type */}
               <div className="space-y-2">
                 <Label>Usage Type</Label>
                 <RadioGroup
@@ -169,6 +150,7 @@ const HeroSection = () => {
                   onValueChange={(value) =>
                     setFormData({ ...formData, usageType: value })
                   }
+                  required
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="personal" id="personal" />
@@ -193,6 +175,7 @@ const HeroSection = () => {
                 </RadioGroup>
               </div>
 
+              {/* Content Type */}
               <div className="space-y-2">
                 <Label htmlFor="contentType">Content Type</Label>
                 <Select
@@ -214,6 +197,7 @@ const HeroSection = () => {
                 </Select>
               </div>
 
+              {/* Tone */}
               <div className="space-y-2">
                 <Label htmlFor="tone">Tone</Label>
                 <Select
@@ -235,6 +219,7 @@ const HeroSection = () => {
                 </Select>
               </div>
 
+              {/* Prompt */}
               <div className="space-y-2">
                 <Label htmlFor="prompt">What would you like to create?</Label>
                 <Textarea
@@ -249,6 +234,7 @@ const HeroSection = () => {
                 />
               </div>
 
+              {/* Form actions */}
               <div className="flex justify-end space-x-4">
                 <DialogTrigger asChild>
                   <Button variant="outline" type="button">
@@ -270,6 +256,7 @@ const HeroSection = () => {
                 </Button>
               </div>
 
+              {/* Generated content */}
               {generatedContent && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
