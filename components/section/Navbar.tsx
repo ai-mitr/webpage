@@ -26,9 +26,17 @@ const Navbar: React.FC = () => {
       name: "Target Audience",
       id: "target",
       subItems: [
-        { name: "Businesses", path: "Businesses" },
-        { name: "Individuals", path: "Individuals" },
-        { name: "Nonprofits", path: "Nonprofits" },
+        { name: "Social media users", path: "Social media users" },
+        {
+          name: "Influencers and content creators",
+          path: "Influencers and content creators",
+        },
+        { name: "Small business owners", path: "Small business owners" },
+        { name: "Event planners", path: "Event planners" },
+        {
+          name: "Politicians and public figures",
+          path: "Politicians and public figures",
+        },
       ],
     },
     {
