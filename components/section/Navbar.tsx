@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
   // Menu items structure for consistency between desktop and mobile
   const menuItems = [
     {
-      name: "Target Audience",
+      name: "Audience",
       id: "target",
       subItems: [
         { name: "Social media users", path: "Social media users" },
@@ -60,14 +60,14 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-transparent shadow-lg">
+    <nav className="bg-transparent shadow-lg py-4">
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
         {/* Logo */}
         <div className="text-2xl font-bold text-blue-600">
           <img
             src="/Logo.png"
             alt="Company Logo"
-            className="h-10 object-cover"
+            className="h-14 object-cover"
           />
         </div>
 
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
                 {item.name}
               </button>
               {openDropdown === item.id && (
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-md rounded-md z-10">
+                <div className="absolute left-0 top-full mt-2 w-48 bg-transparent shadow-md rounded-md z-10">
                   {item.subItems.map((subItem) => (
                     <button
                       key={subItem.path}
