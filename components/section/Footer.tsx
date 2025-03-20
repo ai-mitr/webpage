@@ -27,12 +27,7 @@ const Footer = () => {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="https://github.com/ai-mitr"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
-              >
-                <Github className="h-5 w-5" />
-              </a>
+
               <a
                 href="https://www.linkedin.com/showcase/ai-mitr/about/?viewAsMember=true"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
